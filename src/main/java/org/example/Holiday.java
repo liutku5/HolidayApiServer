@@ -3,6 +3,7 @@ package org.example;
 import java.util.Arrays;
 
 public class Holiday {
+    private long id;
     private String title;
     private String country;
     private String city;
@@ -16,7 +17,8 @@ public class Holiday {
     public Holiday() {
     }
 
-    public Holiday(String title, String country, String city, String duration, String season, String description, double price, String[] photos, int[] rating) {
+    public Holiday(long id, String title, String country, String city, String duration, String season, String description, double price, String[] photos, int[] rating) {
+        this.id = id;
         this.title = title;
         this.country = country;
         this.city = city;
@@ -26,6 +28,14 @@ public class Holiday {
         this.price = price;
         this.photos = photos;
         this.rating = rating;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -103,7 +113,8 @@ public class Holiday {
     @Override
     public String toString() {
         return "Holiday{" +
-                "title='" + title + '\'' +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
                 ", country='" + country + '\'' +
                 ", city='" + city + '\'' +
                 ", duration='" + duration + '\'' +
