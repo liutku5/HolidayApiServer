@@ -1,8 +1,19 @@
 package org.example;
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.stream.Collectors;
+
+import static org.example.Main.holidays;
 
 public class Holiday {
+    private static long idCounter = holidays.stream()
+            .filter(v -> v.getId() != holidays.stream().max(Comparator.comparingLong(Holiday::getId))
+                    .orElse(new Holiday(0, "", "", "", "", new String[]{}, 0.0, "", new int[0])).getId())
+            .map(Holiday::getId)
+            .findFirst()
+            .orElse(0L) + 1;
+
     private long id;
     private String title;
     private String country;
@@ -17,6 +28,19 @@ public class Holiday {
     public Holiday() {
     }
 
+    public Holiday(String title, String country, String city, String duration, String season, String description, double price, String[] photos) {
+        this.id = ++idCounter;
+        this.title = title;
+        this.country = country;
+        this.city = city;
+        this.duration = duration;
+        this.season = season;
+        this.description = description;
+        this.price = price;
+        this.photos = photos;
+        this.rating = new int[]{};
+    }
+
     public Holiday(long id, String title, String country, String city, String duration, String season, String description, double price, String[] photos, int[] rating) {
         this.id = id;
         this.title = title;
@@ -29,6 +53,11 @@ public class Holiday {
         this.photos = photos;
         this.rating = rating;
     }
+
+    public Holiday(int i, String s, String s1, String s2, String s3, String[] strings, double v, String s4, int[] ints) {
+
+    }
+
 
     public long getId() {
         return id;

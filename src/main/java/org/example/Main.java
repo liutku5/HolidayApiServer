@@ -8,7 +8,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
     public static List<Holiday> holidays = new ArrayList<>();
@@ -17,15 +19,15 @@ public class Main {
     public static void main(String[] args) throws IOException {
         loadholidays();
         System.out.println(holidays);
-//        HttpServer server = HttpServer.create(new InetSocketAddress(8000),0);
-//        server.createContext("/createHolidays",new UserHandler());
-//        server.createContext("/getHolidays",new UserHandler());
-//        server.createContext("/getHoliday",new UserHandler());
-//        server.createContext("/updateHoliday",new UserHandler());
-//        server.createContext("/deleteHoliday",new UserHandler());
-//
-//        server.setExecutor(null);
-//        server.start();
+        HttpServer server = HttpServer.create(new InetSocketAddress(8000),0);
+        server.createContext("/createHoliday",new HolidayHandler());
+        server.createContext("/getHolidays",new HolidayHandler());
+        server.createContext("/getHoliday",new HolidayHandler());
+        server.createContext("/updateHoliday",new HolidayHandler());
+        server.createContext("/deleteHoliday",new HolidayHandler());
+
+        server.setExecutor(null);
+        server.start();
     }
 
     public static void loadholidays() {

@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,7 +20,7 @@ public class HolidayHandler implements HttpHandler {
         String path = exchange.getRequestURI().getPath();
         String method = exchange.getRequestMethod();
 
-        if (path.equals("/createHolidays") && method.equals("POST")) {// +
+        if (path.equals("/createHoliday") && method.equals("GET")) {//
             handleCreateHoliday(exchange);
         }
         if (path.equals("/getHolidays") && method.equals("GET")) {// +
@@ -28,10 +29,10 @@ public class HolidayHandler implements HttpHandler {
         if (path.equals("/getHoliday") && method.equals("GET")) {// +
             handleGetHolidayByid(exchange);
         }
-        if (path.equals("/updateHoliday") && method.equals("POST")) {// +
+        if (path.equals("/updateHoliday") && method.equals("GET")) {//
             handleUpdateHoliday(exchange);
         }
-        if (path.equals("/deleteHoliday") && method.equals("POST")) {// +
+        if (path.equals("/deleteHoliday") && method.equals("GET")) {//
             handleDeleteHoliday(exchange);
         }
 
@@ -44,7 +45,6 @@ public class HolidayHandler implements HttpHandler {
         String query = exchange.getRequestURI().getQuery();
         Map<String, String> params = queryToMap(query);
 
-        long id = Long.parseLong(params.get("id"));
         String title = params.get("title");
         String country = params.get("country");
         String city = params.get("city");
@@ -52,11 +52,9 @@ public class HolidayHandler implements HttpHandler {
         String season = params.get("season");
         String description = params.get("description");
         double price = Double.parseDouble(params.get("price"));
-        String[] photos = new String[]{params.get("photos")};
-        int[] rating = new int[]{Integer.parseInt(params.get("rating"))};
+        String[] photos = params.get("photos").split(",");
 
-
-        Holiday holiday = new Holiday(id, title, country, city, duration,season,description,price,photos,rating);
+        Holiday holiday = new Holiday(title, country, city, duration,season,description,price,photos);
         holidays.add(holiday);
         saveHoliday();
         String response = "Holiday has been created successfully";
@@ -95,23 +93,25 @@ public class HolidayHandler implements HttpHandler {
         String season = params.get("season");
         String description = params.get("description");
         double price = Double.parseDouble(params.get("price"));
-        String[] photos = new String[]{params.get("photos")};
-        int[] rating = new int[]{Integer.parseInt(params.get("rating"))};
+        String[] photos = params.get("photos").split(",");
 
+        // Find the holiday by ID
+        for (Holiday holiday : holidays) {
+            if (holiday.getId() == id) {
+                holiday.setTitle(title);
+                holiday.setCountry(country);
+                holiday.setCity(city);
+                holiday.setDuration(duration);
+                holiday.setSeason(season);
+                holiday.setDescription(description);
+                holiday.setPrice(price);
+                holiday.setPhotos(photos);
+                // Assuming ratings should not be updated in this context
+                break;
+            }
+        }
 
-        Holiday holiday = new Holiday(id, title, country, city, duration,season,description,price,photos,rating);
-        holidays.stream()
-                .filter(u -> u.getId() == holiday.getId())
-                .findFirst()
-                .map(existingUser -> {
-                    holidays.set(holidays.indexOf(existingUser), holiday);
-                    return true;
-                })
-                .orElseGet(() -> {
-                    holidays.add(holiday);
-                    return false;
-                });
-        saveHoliday();
+        saveHoliday(); // Assuming this method saves holidays to a file or database
         String response = "Holiday has been updated successfully";
         exchange.sendResponseHeaders(200, response.getBytes().length);
         OutputStream os = exchange.getResponseBody();
