@@ -1,10 +1,12 @@
 package org.example;
 
 import com.google.gson.*;
+import com.sun.net.httpserver.HttpServer;
 
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,8 +14,18 @@ public class Main {
     public static List<Holiday> holidays = new ArrayList<>();
     public static Gson gson = new Gson();
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws IOException {
+        loadholidays();
+        System.out.println(holidays);
+//        HttpServer server = HttpServer.create(new InetSocketAddress(8000),0);
+//        server.createContext("/createHolidays",new UserHandler());
+//        server.createContext("/getHolidays",new UserHandler());
+//        server.createContext("/getHoliday",new UserHandler());
+//        server.createContext("/updateHoliday",new UserHandler());
+//        server.createContext("/deleteHoliday",new UserHandler());
+//
+//        server.setExecutor(null);
+//        server.start();
     }
 
     public static void loadholidays() {
