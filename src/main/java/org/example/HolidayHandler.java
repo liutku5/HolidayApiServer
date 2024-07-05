@@ -35,6 +35,9 @@ public class HolidayHandler implements HttpHandler {
         if (path.equals("/deleteHoliday") && method.equals("GET")) {//
             handleDeleteHoliday(exchange);
         }
+        if (path.equals("/updateRating") && method.equals("GET")) {//
+            handleUpdateRating(exchange);
+        }
 
         exchange.sendResponseHeaders(400, -1);
         OutputStream os = exchange.getResponseBody();
@@ -54,7 +57,7 @@ public class HolidayHandler implements HttpHandler {
         double price = Double.parseDouble(params.get("price"));
         String[] photos = params.get("photos").split(",");
 
-        Holiday holiday = new Holiday(title, country, city, duration,season,description,price,photos);
+        Holiday holiday = new Holiday(title, country, city, duration, season, description, price, photos);
         holidays.add(holiday);
         saveHoliday();
         String response = "Holiday has been created successfully";
@@ -63,6 +66,41 @@ public class HolidayHandler implements HttpHandler {
         os.write(response.getBytes());
         os.close();
     }
+
+    private void handleUpdateRating(HttpExchange exchange) throws IOException {
+        String query = exchange.getRequestURI().getQuery();
+        Map<String, String> params = queryToMap(query);
+
+        long id = Long.parseLong(params.get("id"));
+        int rating = Integer.parseInt(params.get("rating"));
+
+        Holiday holiday = holidays.stream().filter(h -> h.getId() == id).findFirst().orElse(null);
+
+        if (holiday != null) {
+            holiday.setRating(new int[]{rating});
+            saveHoliday();
+            String response = "Rating has been updated successfully";
+            exchange.sendResponseHeaders(200, response.getBytes().length);
+            OutputStream os = exchange.getResponseBody();
+            os.write(response.getBytes());
+            os.close();
+        } else {
+            String response = "Holiday not found";
+            exchange.sendResponseHeaders(404, response.getBytes().length);
+            OutputStream os = exchange.getResponseBody();
+            os.write(response.getBytes());
+            os.close();
+        }
+
+
+        saveHoliday();
+        String response = "Rating has been updated successfully";
+        exchange.sendResponseHeaders(200, response.getBytes().length);
+        OutputStream os = exchange.getResponseBody();
+        os.write(response.getBytes());
+        os.close();
+    }
+
 
     private void handleDeleteHoliday(HttpExchange exchange) throws IOException {
         String query = exchange.getRequestURI().getQuery();
@@ -95,7 +133,6 @@ public class HolidayHandler implements HttpHandler {
         double price = Double.parseDouble(params.get("price"));
         String[] photos = params.get("photos").split(",");
 
-        // Find the holiday by ID
         for (Holiday holiday : holidays) {
             if (holiday.getId() == id) {
                 holiday.setTitle(title);
@@ -106,12 +143,11 @@ public class HolidayHandler implements HttpHandler {
                 holiday.setDescription(description);
                 holiday.setPrice(price);
                 holiday.setPhotos(photos);
-                // Assuming ratings should not be updated in this context
                 break;
             }
         }
 
-        saveHoliday(); // Assuming this method saves holidays to a file or database
+        saveHoliday();
         String response = "Holiday has been updated successfully";
         exchange.sendResponseHeaders(200, response.getBytes().length);
         OutputStream os = exchange.getResponseBody();
@@ -132,7 +168,8 @@ public class HolidayHandler implements HttpHandler {
     private void handleGetHolidayByid(HttpExchange exchange) throws IOException {
 
         String query = exchange.getRequestURI().getQuery();
-        long id = Long.parseLong(query.split("=")[1]);;
+        long id = Long.parseLong(query.split("=")[1]);
+        ;
         Holiday holiday = holidays.stream().filter(u -> u.getId() == id).findFirst().orElse(null);
         if (holiday != null) {
             String response = gson.toJson(holiday);
