@@ -16,8 +16,11 @@ public class Main {
     public static List<Holiday> holidays = new ArrayList<>();
     public static Gson gson = new Gson();
 
+
+
     public static void main(String[] args) throws IOException {
         loadholidays();
+
         System.out.println(holidays);
         HttpServer server = HttpServer.create(new InetSocketAddress(8000),0);
         server.createContext("/createHoliday",new HolidayHandler());

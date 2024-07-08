@@ -2,17 +2,16 @@ package org.example;
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.stream.Collectors;
 
 import static org.example.Main.holidays;
 
 public class Holiday {
     private static long idCounter = holidays.stream()
             .filter(v -> v.getId() != holidays.stream().max(Comparator.comparingLong(Holiday::getId))
-                    .orElse(new Holiday(0, "", "", "", "", new String[]{}, 0.0, "", new int[0])).getId())
+                    .orElse(new Holiday()).getId())
             .map(Holiday::getId)
             .findFirst()
-            .orElse(0L) + 1;
+            .orElse((long) 0);
 
     private long id;
     private String title;

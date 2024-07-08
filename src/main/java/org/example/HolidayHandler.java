@@ -29,10 +29,10 @@ public class HolidayHandler implements HttpHandler {
         if (path.equals("/getHoliday") && method.equals("GET")) {// +
             handleGetHolidayByid(exchange);
         }
-        if (path.equals("/updateHoliday") && method.equals("GET")) {//
+        if (path.equals("/updateHoliday") && method.equals("POST")) {//
             handleUpdateHoliday(exchange);
         }
-        if (path.equals("/deleteHoliday") && method.equals("GET")) {//
+        if (path.equals("/deleteHoliday") && method.equals("POST")) {//
             handleDeleteHoliday(exchange);
         }
         if (path.equals("/updateRating") && method.equals("GET")) {//
@@ -74,28 +74,27 @@ public class HolidayHandler implements HttpHandler {
         long id = Long.parseLong(params.get("id"));
         int rating = Integer.parseInt(params.get("rating"));
 
+        System.out.println("Updating rating for ID: " + id + ", Rating: " + rating);
+
         Holiday holiday = holidays.stream().filter(h -> h.getId() == id).findFirst().orElse(null);
 
         if (holiday != null) {
-            holiday.setRating(new int[]{rating});
+            int[] ratingsArray = new int[]{rating};
+            holiday.setRating(ratingsArray);
+
             saveHoliday();
+
             String response = "Rating has been updated successfully";
-            exchange.sendResponseHeaders(200, response.getBytes().length);
-            OutputStream os = exchange.getResponseBody();
-            os.write(response.getBytes());
-            os.close();
+            sendResponse(exchange, 200, response);
         } else {
-            String response = "Holiday not found";
-            exchange.sendResponseHeaders(404, response.getBytes().length);
-            OutputStream os = exchange.getResponseBody();
-            os.write(response.getBytes());
-            os.close();
+            String response = "Holiday with ID " + id + " not found";
+            System.out.println(response); // Log the response for debugging
+            sendResponse(exchange, 404, response);
         }
+    }
 
-
-        saveHoliday();
-        String response = "Rating has been updated successfully";
-        exchange.sendResponseHeaders(200, response.getBytes().length);
+    private void sendResponse(HttpExchange exchange, int statusCode, String response) throws IOException {
+        exchange.sendResponseHeaders(statusCode, response.getBytes().length);
         OutputStream os = exchange.getResponseBody();
         os.write(response.getBytes());
         os.close();
