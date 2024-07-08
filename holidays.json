@@ -1,1 +1,60 @@
-[{"id":1,"title":"Spring in Paris","country":"France","city":"Paris","duration":"1 week","season":"Spring","description":"Enjoy the cherry blossoms and Eiffel Tower","price":1500.0,"photos":["https://example.com/photo1.jpg","https://example.com/photo2.jpg"],"rating":[2]}]
+[{"id":1,"title":"Spring in Paris","country":"France","city":"Paris","duration":"1 week","season":"Spring","description":"Enjoy the cherry blossoms and Eiffel Tower","price":1500.0,"photos":["https://images.pexels.com/photos/1308940/pexels-photo-1308940.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1","https://images.pexels.com/photos/2363/france-landmark-lights-night.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"],"rating":[2,5]},{
+  "id": 2,
+  "title": "Sunny Beach Escape",
+  "country": "Spain",
+  "city": "Barcelona",
+  "duration": "7 days",
+  "season": "Summer",
+  "description": "Enjoy the sunny beaches of Barcelona with a 7-day getaway.",
+  "price": 1200.50,
+  "photos": ["https://images.pexels.com/photos/457878/pexels-photo-457878.jpeg?cs=srgb&dl=pexels-asadphoto-457878.jpg&fm=jpg", "https://media.istockphoto.com/id/151562000/photo/tropical-drink-paradise.webp?b=1&s=170667a&w=0&k=20&c=nPI7I_Ix-Gd_FnHdpYQch6eN5V6j3WwJUqu4GB8aiTA="],
+  "rating": [5, 4, 4, 5, 5]
+},
+  {
+    "id": 3,
+    "title": "Winter Wonderland",
+    "country": "Switzerland",
+    "city": "Zermatt",
+    "duration": "10 days",
+    "season": "Winter",
+    "description": "Experience the magic of winter in Zermatt with skiing and snowboarding.",
+    "price": 2500.75,
+    "photos": ["https://t3.ftcdn.net/jpg/05/43/88/48/360_F_543884843_G2Vk17IJ77FRZ4r4r6Wo3jyrKomvJQ8C.jpg", "https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-winter-mountains-with-inversion-during-golden-hour-free-photo.jpg?w=2210&quality=70"],
+    "rating": [5, 5, 5, 4, 5]
+  },
+  {
+    "id": 4,
+    "title": "Cultural Tour",
+    "country": "Japan",
+    "city": "Kyoto",
+    "duration": "5 days",
+    "season": "Spring",
+    "description": "Explore the cultural heritage and cherry blossoms of Kyoto.",
+    "price": 1800.00,
+    "photos": ["https://www.state.gov/wp-content/uploads/2019/04/Japan-2107x1406.jpg", "https://cms-b-assets.familysearch.org/dims4/default/d95cfcd/2147483647/strip/true/crop/800x500+0+0/resize/1240x775!/quality/90/?url=https%3A%2F%2Ffamilysearch-brightspot.s3.amazonaws.com%2Fdc%2F7a%2F89f67a54a848a7f4f745479b4bc6%2Fyasaka-pagoda-japan.jpg"],
+    "rating": [4, 4, 5, 5, 4]
+  },
+  {
+    "id": 5,
+    "title": "Desert Adventure",
+    "country": "Morocco",
+    "city": "Marrakech",
+    "duration": "8 days",
+    "season": "Autumn",
+    "description": "Discover the beauty of the Sahara desert with camel rides and more.",
+    "price": 1500.30,
+    "photos": ["https://www.muchbetteradventures.com/_next/image/?url=https%3A%2F%2Fimages.ctfassets.net%2Fm5us57n7qfgl%2FuDZbvWwBC5vgK3A9NIyqW%2F9f384d52680391be8b7fcd234081680a%2FGettyImages-110900708.jpg&w=2048&q=50", "https://images.pexels.com/photos/3581916/pexels-photo-3581916.jpeg?cs=srgb&dl=pexels-mographe-3581916.jpg&fm=jpg"],
+    "rating": [4, 3, 4, 4, 3]
+  },
+  {
+    "id": 6,
+    "title": "Tropical Paradise",
+    "country": "Thailand",
+    "city": "Phuket",
+    "duration": "7 days",
+    "season": "Summer",
+    "description": "Relax in the tropical paradise of Phuket with beautiful beaches and clear waters.",
+    "price": 1400.60,
+    "photos": ["https://www.traveloffpath.com/wp-content/uploads/2021/07/Thailands-Samui-Plus-Sandbox-Launches-For-Travelers-From-Today.jpg.webp", "https://static3.depositphotos.com/1003352/159/i/450/depositphotos_1594464-stock-photo-tropical-beach-maya-bay-thailand.jpg"],
+    "rating": [5, 4, 5, 4, 5]
+  }]

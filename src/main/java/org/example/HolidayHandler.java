@@ -19,6 +19,7 @@ public class HolidayHandler implements HttpHandler {
     public void handle(HttpExchange exchange) throws IOException {
         String path = exchange.getRequestURI().getPath();
         String method = exchange.getRequestMethod();
+        handleCORS(exchange);
 
         if (path.equals("/createHoliday") && method.equals("GET")) {//
             handleCreateHoliday(exchange);
@@ -179,6 +180,17 @@ public class HolidayHandler implements HttpHandler {
         } else {
             exchange.sendResponseHeaders(404, -1);
         }
+    }
+
+    private void handleCORS(HttpExchange exchange) {
+        // Allow requests from all origins
+        exchange.getResponseHeaders().set("Access-Control-Allow-Origin", "*");
+        // Allow specific methods
+        exchange.getResponseHeaders().set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+        // Allow specific headers
+        exchange.getResponseHeaders().set("Access-Control-Allow-Headers", "*");
+        // Allow credentials, if needed
+        exchange.getResponseHeaders().set("Access-Control-Allow-Credentials", "true");
     }
 
     private Map<String, String> queryToMap(String query) {

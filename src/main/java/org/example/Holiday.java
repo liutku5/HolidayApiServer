@@ -25,6 +25,7 @@ public class Holiday {
     private int[] rating;
 
     public Holiday() {
+        id = ++idCounter;
     }
 
     public Holiday(String title, String country, String city, String duration, String season, String description, double price, String[] photos) {
