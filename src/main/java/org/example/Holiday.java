@@ -28,37 +28,6 @@ public class Holiday {
         id = ++idCounter;
     }
 
-    public Holiday(String title, String country, String city, String duration, String season, String description, double price, String[] photos) {
-        this.id = ++idCounter;
-        this.title = title;
-        this.country = country;
-        this.city = city;
-        this.duration = duration;
-        this.season = season;
-        this.description = description;
-        this.price = price;
-        this.photos = photos;
-        this.rating = new int[]{};
-    }
-
-    public Holiday(long id, String title, String country, String city, String duration, String season, String description, double price, String[] photos, int[] rating) {
-        this.id = id;
-        this.title = title;
-        this.country = country;
-        this.city = city;
-        this.duration = duration;
-        this.season = season;
-        this.description = description;
-        this.price = price;
-        this.photos = photos;
-        this.rating = rating;
-    }
-
-    public Holiday(int i, String s, String s1, String s2, String s3, String[] strings, double v, String s4, int[] ints) {
-
-    }
-
-
     public long getId() {
         return id;
     }
