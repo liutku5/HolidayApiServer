@@ -57,7 +57,6 @@ public class HolidayHandler implements HttpHandler {
     }
 
     private Holiday requestHoliday(HttpExchange exchange) throws IOException {
-        System.out.println("reqHoliday");
         InputStream requestBody = exchange.getRequestBody();
         BufferedReader reader = new BufferedReader(new InputStreamReader(requestBody));
         String dataString = "";
@@ -75,20 +74,14 @@ public class HolidayHandler implements HttpHandler {
     private void handleUpdateRating(HttpExchange exchange) throws IOException {
         String query = exchange.getRequestURI().getQuery();
         Map<String, String> params = queryToMap(query);
-
         long id = Long.parseLong(params.get("id"));
         int rating = Integer.parseInt(params.get("rating"));
-
         System.out.println("Updating rating for ID: " + id + ", Rating: " + rating);
-
         Holiday holiday = holidays.stream().filter(h -> h.getId() == id).findFirst().orElse(null);
-
         if (holiday != null) {
             int[] ratingsArray = new int[]{rating};
             holiday.setRating(ratingsArray);
-
             saveHoliday();
-
             String response = "Rating has been updated successfully";
             sendResponse(exchange, 200, response);
         } else {
@@ -105,12 +98,10 @@ public class HolidayHandler implements HttpHandler {
         os.close();
     }
 
-
     private void handleDeleteHoliday(HttpExchange exchange) throws IOException {
-        String query = exchange.getRequestURI().getQuery();
-        long id = Long.parseLong(query.split("=")[1]);
-        boolean removed = holidays.removeIf(u -> u.getId() == id);
-
+        System.out.println("delele");
+        Holiday holidayToDelete = requestHoliday(exchange);
+        boolean removed = holidays.removeIf(u -> u.getId() == holidayToDelete.getId());
         if (removed) {
             saveHoliday();
             String response = "Holiday has been deleted successfully";
@@ -124,33 +115,18 @@ public class HolidayHandler implements HttpHandler {
     }
 
     private void handleUpdateHoliday(HttpExchange exchange) throws IOException {
-        String query = exchange.getRequestURI().getQuery();
-        Map<String, String> params = queryToMap(query);
-
-        long id = Long.parseLong(params.get("id"));
-        String title = params.get("title");
-        String country = params.get("country");
-        String city = params.get("city");
-        String duration = params.get("duration");
-        String season = params.get("season");
-        String description = params.get("description");
-        double price = Double.parseDouble(params.get("price"));
-        String[] photos = params.get("photos").split(",");
-
-        for (Holiday holiday : holidays) {
-            if (holiday.getId() == id) {
-                holiday.setTitle(title);
-                holiday.setCountry(country);
-                holiday.setCity(city);
-                holiday.setDuration(duration);
-                holiday.setSeason(season);
-                holiday.setDescription(description);
-                holiday.setPrice(price);
-                holiday.setPhotos(photos);
-                break;
-            }
-        }
-
+        Holiday holidayToUpdate = requestHoliday(exchange);
+        holidays.stream()
+                .filter(u -> u.getId() == holidayToUpdate.getId())
+                .findFirst()
+                .map(existingUser -> {
+                    holidays.set(holidays.indexOf(existingUser), holidayToUpdate);
+                    return true;
+                })
+                .orElseGet(() -> {
+                    holidays.add(holidayToUpdate);
+                    return false;
+                });
         saveHoliday();
         String response = "Holiday has been updated successfully";
         exchange.sendResponseHeaders(200, response.getBytes().length);
@@ -160,7 +136,6 @@ public class HolidayHandler implements HttpHandler {
     }
 
     private void handleGetHolidays(HttpExchange exchange) throws IOException {
-
         String response = gson.toJson(holidays);
         exchange.sendResponseHeaders(200, response.getBytes().length);
         OutputStream os = exchange.getResponseBody();
@@ -170,7 +145,6 @@ public class HolidayHandler implements HttpHandler {
     }
 
     private void handleGetHolidayByid(HttpExchange exchange) throws IOException {
-
         String query = exchange.getRequestURI().getQuery();
         long id = Long.parseLong(query.split("=")[1]);
         ;
