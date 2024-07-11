@@ -1,1 +1,77 @@
-[{"id":1,"title":"Spring in Paris","country":"France","city":"Paris","duration":"1 week","season":"Spring","description":"Enjoy the cherry blossoms and Eiffel Tower","price":1500.0,"photos":["https://images.pexels.com/photos/1308940/pexels-photo-1308940.jpeg?auto\u003dcompress\u0026cs\u003dtinysrgb\u0026w\u003d1260\u0026h\u003d750\u0026dpr\u003d1","https://images.pexels.com/photos/2363/france-landmark-lights-night.jpg?auto\u003dcompress\u0026cs\u003dtinysrgb\u0026w\u003d1260\u0026h\u003d750\u0026dpr\u003d1"],"rating":[2,5]},{"id":2,"title":"Sunny Beach Escape","country":"Spain","city":"Barcelona","duration":"7 days","season":"Summer","description":"Enjoy the sunny beaches of Barcelona with a 7-day getaway.","price":1200.5,"photos":["https://images.pexels.com/photos/457878/pexels-photo-457878.jpeg?cs\u003dsrgb\u0026dl\u003dpexels-asadphoto-457878.jpg\u0026fm\u003djpg","https://media.istockphoto.com/id/151562000/photo/tropical-drink-paradise.webp?b\u003d1\u0026s\u003d170667a\u0026w\u003d0\u0026k\u003d20\u0026c\u003dnPI7I_Ix-Gd_FnHdpYQch6eN5V6j3WwJUqu4GB8aiTA\u003d"],"rating":[5,4,4,5,5]},{"id":3,"title":"Winter Wonderland","country":"Switzerland","city":"Zermatt","duration":"10 days","season":"Winter","description":"Experience the magic of winter in Zermatt with skiing and snowboarding.","price":2500.75,"photos":["https://t3.ftcdn.net/jpg/05/43/88/48/360_F_543884843_G2Vk17IJ77FRZ4r4r6Wo3jyrKomvJQ8C.jpg","https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-winter-mountains-with-inversion-during-golden-hour-free-photo.jpg?w\u003d2210\u0026quality\u003d70"],"rating":[5,5,5,4,5]},{"id":4,"title":"Cultural Tour","country":"Japan","city":"Kyoto","duration":"5 days","season":"Spring","description":"Explore the cultural heritage and cherry blossoms of Kyoto.","price":1800.0,"photos":["https://www.state.gov/wp-content/uploads/2019/04/Japan-2107x1406.jpg","https://cms-b-assets.familysearch.org/dims4/default/d95cfcd/2147483647/strip/true/crop/800x500+0+0/resize/1240x775!/quality/90/?url\u003dhttps%3A%2F%2Ffamilysearch-brightspot.s3.amazonaws.com%2Fdc%2F7a%2F89f67a54a848a7f4f745479b4bc6%2Fyasaka-pagoda-japan.jpg"],"rating":[4,4,5,5,4]},{"id":5,"title":"Desert Adventure","country":"Morocco","city":"Marrakech","duration":"8 days","season":"Autumn","description":"Discover the beauty of the Sahara desert with camel rides and more.","price":1500.3,"photos":["https://www.muchbetteradventures.com/_next/image/?url\u003dhttps%3A%2F%2Fimages.ctfassets.net%2Fm5us57n7qfgl%2FuDZbvWwBC5vgK3A9NIyqW%2F9f384d52680391be8b7fcd234081680a%2FGettyImages-110900708.jpg\u0026w\u003d2048\u0026q\u003d50","https://images.pexels.com/photos/3581916/pexels-photo-3581916.jpeg?cs\u003dsrgb\u0026dl\u003dpexels-mographe-3581916.jpg\u0026fm\u003djpg"],"rating":[4,3,4,4,3]},{"id":6,"title":"Tropical Paradise","country":"Thailand","city":"Phuket","duration":"7 days","season":"Summer","description":"Relax in the tropical paradise of Phuket with beautiful beaches and clear waters.","price":1400.6,"photos":["https://www.traveloffpath.com/wp-content/uploads/2021/07/Thailands-Samui-Plus-Sandbox-Launches-For-Travelers-From-Today.jpg.webp","https://static3.depositphotos.com/1003352/159/i/450/depositphotos_1594464-stock-photo-tropical-beach-maya-bay-thailand.jpg"],"rating":[5,4,5,4,5]},{"id":7,"title":"Tropical Paradise","country":"Bahamas","city":"Nassau","duration":"7 days","season":"Summer","description":"Experience the ultimate tropical getaway in Nassau, Bahamas. Enjoy pristine beaches, crystal-clear waters, and luxurious accommodations.","price":2500.75,"photos":["https://i0.wp.com/thevalemagazine.com/wp-content/uploads/2019/06/atlantis-paradise-island-hotel-bahamas.jpg?fit\u003d1200%2C800\u0026ssl\u003d1","https://media.istockphoto.com/id/864849490/photo/amazing-caribbean-beach-at-nassau-bahamas.jpg?s\u003d612x612\u0026w\u003d0\u0026k\u003d20\u0026c\u003dzAV_sQseouOilRpR9xFjyEZBxbfF7WbXxRDxG7ojDcE\u003d"],"rating":[0]},{"id":8,"title":"dsads","country":"dasdsa","city":"dasddsa","duration":"sadas","season":"asdas","description":"sadasd","price":564.0,"photos":["https://www.shutterstock.com/image-photo/bahamas-palms-beach-landscape-clear-260nw-1999814837.jpg","https://d15zjc2r4e8kr7.cloudfront.net/9397/blog/psands.jpg"],"rating":[0]}]
+[
+  {
+    "id": 1,
+    "title": "Mediterranean Cruise",
+    "country": "Italy",
+    "city": "Venice",
+    "duration": "14 days",
+    "season": "Spring",
+    "description": "Experience the beauty of the Mediterranean with a 14-day cruise starting from Venice.",
+    "price": 3200.45,
+    "photos": [
+      "https://media.istockphoto.com/id/152542208/photo/mediterranean-cruise.jpg?s=612x612&w=0&k=20&c=wdaX-vAGLBIJWQ0zjohUdxzCZdjtCQ2asWnxF3X50JA=",
+      "https://cdn.mundomarcruceros.com/wlgs/mundomar-images/Mediterraneo-768x440.jpg"
+    ],
+    "rating": [4, 5, 4, 5]
+  },
+  {
+    "id": 2,
+    "title": "Safari Adventure",
+    "country": "Kenya",
+    "city": "Nairobi",
+    "duration": "10 days",
+    "season": "Summer",
+    "description": "Explore the wild savannah and witness the Great Migration.",
+    "price": 2700.00,
+    "photos": [
+      "https://www.naturaltoursandsafaris.com/wp-content/webp-express/webp-images/uploads/2022/08/KEN_7854-1-scaled-e1660295254314.jpg.webp",
+      "https://worldempiresafaris.co.ke/wp-content/uploads/2023/08/World-Empire-Safaris-100396-1290x670.jpg"
+    ],
+    "rating": [5, 4, 5, 4, 5]
+  },
+  {
+    "id": 3,
+    "title": "Beach Paradise",
+    "country": "Thailand",
+    "city": "Phuket",
+    "duration": "7 days",
+    "season": "Winter",
+    "description": "Relax on the beautiful beaches of Phuket and enjoy the vibrant nightlife.",
+    "price": 1500.99,
+    "photos": [
+      "https://i.pinimg.com/736x/76/a1/96/76a196d17a61fc3c9148394fefb083f6.jpg",
+      "https://media1.thrillophilia.com/filestore/5whczsnyq78zydh3urlijmiv1ycv_Water_Sports_In_Phuket_3b4be77771.jpg"
+    ],
+    "rating": [3, 4, 5, 4]
+  },
+  {
+    "id": 4,
+    "title": "Mountain Escape",
+    "country": "Switzerland",
+    "city": "Zermatt",
+    "duration": "5 days",
+    "season": "Autumn",
+    "description": "Experience the serene mountain landscapes and enjoy winter sports.",
+    "price": 2500.75,
+    "photos": [
+      "https://content.api.news/v3/images/bin/27f7a4afbc20b9306002d214106cdcd4",
+      "https://c.ndtvimg.com/2024-04/p7dsrh2o_switzerland_625x300_27_April_24.jpg"
+    ],
+    "rating": [4, 5, 4, 5, 5]
+  },
+  {
+    "id": 5,
+    "title": "Cultural Tour",
+    "country": "Japan",
+    "city": "Kyoto",
+    "duration": "8 days",
+    "season": "Spring",
+    "description": "Immerse yourself in the rich culture and history of Kyoto during the cherry blossom season.",
+    "price": 2000.25,
+    "photos": [
+      "https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1200,h_630/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/gmuv6xkoor59tygvoph6/Kyoto%20Uji%20World%20Cultural%20Heritage%20Day%20Tour.jpg",
+      "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/7c/91/86/caption.jpg?w=500&h=400&s=1"
+    ],
+    "rating": [5, 5, 4, 5, 5]
+  }
+]

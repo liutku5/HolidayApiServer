@@ -64,8 +64,9 @@ public class HolidayHandler implements HttpHandler {
         while ((line = reader.readLine()) != null) {
             dataString += line;
         }
+
         reader.close();
-        System.out.println(dataString);
+        System.out.println("|" + dataString + "|");
         Holiday holiday = gson.fromJson(dataString, Holiday.class);
 
         return holiday;
@@ -101,6 +102,7 @@ public class HolidayHandler implements HttpHandler {
     private void handleDeleteHoliday(HttpExchange exchange) throws IOException {
         System.out.println("delele");
         Holiday holidayToDelete = requestHoliday(exchange);
+        System.out.println(holidayToDelete);
         boolean removed = holidays.removeIf(u -> u.getId() == holidayToDelete.getId());
         if (removed) {
             saveHoliday();
@@ -115,6 +117,7 @@ public class HolidayHandler implements HttpHandler {
     }
 
     private void handleUpdateHoliday(HttpExchange exchange) throws IOException {
+        System.out.println("update");
         Holiday holidayToUpdate = requestHoliday(exchange);
         holidays.stream()
                 .filter(u -> u.getId() == holidayToUpdate.getId())
